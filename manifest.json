@@ -1,0 +1,9 @@
+﻿{
+	"name": "BreathingUnderwater",
+	"version_number": "1.0.0",
+	"website_url": "",
+	"description": "Holding the interact button counts as repeated input",
+	"dependencies": [
+		"ReturnOfModding-ReturnOfModding-1.0.7"
+	]
+}
