@@ -34,5 +34,6 @@ local function include_item(identifier)
 end
 
 include_item("monkeyMask")
+include_item("xray")
 
 return items
