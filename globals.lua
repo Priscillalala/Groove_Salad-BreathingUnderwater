@@ -1,4 +1,4 @@
-namespace = _ENV["!guid"]
+namespace = "breathingUnderwater"
 
 ---@enum class_buff
 CLASS_BUFF  = {
