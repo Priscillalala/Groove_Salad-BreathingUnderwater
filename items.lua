@@ -69,17 +69,21 @@ items.monkeyMask_id = gm.item_create(namespace, "monkeyMask")
 log.info(items.monkeyMask_id)
 local monkeyMask = get(class_item, items.monkeyMask_id)
 log.info(get(monkeyMask, CLASS_ITEM.identifier))
---gm.array_set(test_item, CLASS_ITEM.tier, 1.0)
-set(monkeyMask, CLASS_ITEM.tier, ITEM_TIER.rare)
-set(monkeyMask, CLASS_ITEM.sprite_id, gm.constants.sAncientValley2TitleDoodads4)
 
-local monkeyMask_log_id = gm.item_log_create(namespace, "monkeyMask", 4, gm.constants.sAncientValley2TitleDoodads4)
+set(monkeyMask, CLASS_ITEM.tier, ITEM_TIER.rare)
+local sMonkeyMask = load_sprite("sMonkeyMask.png", 20, 20)
+set(monkeyMask, CLASS_ITEM.sprite_id, sMonkeyMask)
+log.info(gm.object_get_sprite(get(monkeyMask, CLASS_ITEM.object_id)))
+gm.object_set_sprite_w(get(monkeyMask, CLASS_ITEM.object_id), sMonkeyMask)
+set(monkeyMask, CLASS_ITEM.loot_tags, LOOT_TAG.category_damage)
+
+local monkeyMask_log_id = gm.item_log_create(namespace, "monkeyMask", 4, sMonkeyMask)
 local monkeyMask_log = get(class_item_log, monkeyMask_log_id)
 set(monkeyMask_log, CLASS_ITEM_LOG.pickup_object_id, get(monkeyMask, CLASS_ITEM.object_id))
 
 set(monkeyMask, CLASS_ITEM.item_log_id, monkeyMask_log_id)
 
-add_language({
+add_language {
     item = {
         monkeyMask = {
             name = "Second Soul",
@@ -90,6 +94,6 @@ add_language({
             story = "blah blah blah"
         }
     }
-})
+}
 
 return items

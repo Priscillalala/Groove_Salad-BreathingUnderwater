@@ -44,6 +44,18 @@ gm.post_script_hook(gm.constants.translate_load_file, function(self, other, resu
     log.info("translate_load_file")
     register_language()
 end)
+
+local plugin_path = _ENV["!plugins_mod_folder_path"]
+
+---@param local_path string
+---@param x_orig integer
+---@param y_orig integer
+---@param sub_image_number integer?
+---@return number
+function load_sprite(local_path, x_orig, y_orig, sub_image_number)
+    return gm.sprite_add(path.combine(plugin_path, local_path), sub_image_number or 1, false, false, x_orig, y_orig)
+end
+
 --[[
 gm.post_script_hook(gm.constants.buff_create, function(self, other, result, args)
    log.info("buff_create: " .. #args)
@@ -61,6 +73,15 @@ gm.post_script_hook(gm.constants.apply_buff, function(self, other, result, args)
       log.info(value.value)
    end
    --log.info("result: " .. result.value)
+end)
+--]]
+
+--[[
+gm.post_script_hook(gm.constants.object_set_sprite_w, function(self, other, result, args)
+   log.info("object_set_sprite_w: " .. #args)
+   for index, value in ipairs(args) do
+      log.info(value.value)
+   end
 end)
 --]]
 
@@ -107,7 +128,7 @@ gui.add_imgui(function()
                         log.info(value)
                         local item = get(class_item, value)
                         --gm.item_give(instance, test_item_id, 1, 0)
-                        gm.item_pickup_create(instance.x, instance.y, 0, get(item, CLASS_ITEM.object_id), 10)
+                        gm.item_pickup_create(instance.x, instance.y, 1, get(item, CLASS_ITEM.object_id), 0)
                         break
                     end
                 end

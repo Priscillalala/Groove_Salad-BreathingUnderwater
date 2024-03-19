@@ -26,7 +26,7 @@ local buffs = {}
 
 buffs.rage_id = gm.buff_create(namespace, "rage")
 local rage = get(class_buff, buffs.rage_id)
-set(rage, CLASS_BUFF.icon_sprite, gm.constants.sMonitorFaceRightALT)
+set(rage, CLASS_BUFF.icon_sprite, load_sprite("sBuffRage.png", 12, 8))
 set(rage, CLASS_BUFF.show_icon, true)
 
 buffs.secondary_id = gm.buff_create(namespace, "secondary")
