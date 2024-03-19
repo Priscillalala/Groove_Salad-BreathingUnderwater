@@ -1,5 +1,3 @@
-namespace = _ENV["!guid"]
-
 ---@param array any
 ---@param index integer
 ---@return unknown
@@ -56,6 +54,8 @@ function load_sprite(local_path, x_orig, y_orig, sub_image_number)
     return gm.sprite_add(path.combine(plugin_path, local_path), sub_image_number or 1, false, false, x_orig, y_orig)
 end
 
+
+
 --[[
 gm.post_script_hook(gm.constants.buff_create, function(self, other, result, args)
    log.info("buff_create: " .. #args)
@@ -96,44 +96,20 @@ end)
 
 local function init()
     log.info("init!")
+    require("./globals")
+    ---@diagnostic disable-next-line: redundant-parameter
+    items = require("./items", items)
     register_language()
 end
 
 local hooks = {}
 hooks["gml_Object_oStartMenu_Step_2"] = function()
     hooks["gml_Object_oStartMenu_Step_2"] = nil
-    ---@type Items
-    items = items or require "./items"
-    ---@type Buffs
-    buffs = buffs or require "./buffs"
     init()
 end
 
 gm.pre_code_execute(function(self, other, code, result, flags)
     if hooks[code.name] then
         hooks[code.name](self)
-    end
-end)
-
-require "./monkeyMask"
-
-local class_item = gm.variable_global_get("class_item")
-
-gui.add_imgui(function()
-    if ImGui.Begin("Debug") then
-        for key, value in pairs(items) do
-            if ImGui.Button("Give " .. key) then
-                for _, instance in ipairs(gm.CInstance.instances_active) do
-                    if instance.object_index == gm.constants.oP then
-                        log.info(value)
-                        local item = get(class_item, value)
-                        --gm.item_give(instance, test_item_id, 1, 0)
-                        gm.item_pickup_create(instance.x, instance.y, 1, get(item, CLASS_ITEM.object_id), 0)
-                        break
-                    end
-                end
-            end
-        end
-        ImGui.End()
     end
 end)
