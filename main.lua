@@ -102,14 +102,25 @@ local function init()
     register_language()
 end
 
-local hooks = {}
-hooks["gml_Object_oStartMenu_Step_2"] = function()
-    hooks["gml_Object_oStartMenu_Step_2"] = nil
-    init()
-end
+---@type table<string, fun(self:any): boolean?>
+object_pre_hooks = {}
 
 gm.pre_code_execute(function(self, other, code, result, flags)
-    if hooks[code.name] then
-        hooks[code.name](self)
+    if object_pre_hooks[code.name] then
+        return object_pre_hooks[code.name](self)
     end
 end)
+
+---@type table<string, fun(self:any)>
+object_post_hooks = {}
+
+gm.post_code_execute(function(self, other, code, result, flags)
+    if object_post_hooks[code.name] then
+        object_post_hooks[code.name](self)
+    end
+end)
+
+object_pre_hooks["gml_Object_oStartMenu_Step_2"] = function()
+    object_pre_hooks["gml_Object_oStartMenu_Step_2"] = nil
+    init()
+end

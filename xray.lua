@@ -51,7 +51,7 @@ gm.post_script_hook(gm.constants.item_drop_boss, function(self, other, result, a
 end)
 --]]
 
----[[
+--[[
 gm.post_script_hook(gm.constants.recalculate_stats, function(self, other, result, args)
     local item_stack = get(self.inventory_item_stack, xray.id)
     if item_stack > 0 then
