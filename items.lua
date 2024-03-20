@@ -35,5 +35,6 @@ end
 include_item("monkeyMask")
 include_item("xray")
 include_item("metalDetector")
+include_item("speedOnPickup")
 
 return items

@@ -8,11 +8,11 @@ if not xray then
     set(item, CLASS_ITEM.tier, ITEM_TIER.rare)
     set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_utility)
 
-    local sMonkeyMask = load_sprite("sXray.png", 20, 20)
-    set(item, CLASS_ITEM.sprite_id, sMonkeyMask)
-    gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sMonkeyMask)
+    local sXray = load_sprite("sXray.png", 20, 20)
+    set(item, CLASS_ITEM.sprite_id, sXray)
+    gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sXray)
 
-    xray.log_id = gm.item_log_create(namespace, identifier, 4, sMonkeyMask)
+    xray.log_id = gm.item_log_create(namespace, identifier, 4, sXray)
     local item_log = get(class_item_log, xray.log_id)
     set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
 

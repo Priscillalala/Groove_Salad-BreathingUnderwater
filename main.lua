@@ -94,15 +94,7 @@ gm.post_script_hook(gm.constants.init_actor_default, function(self, other, resul
 end)
 --]]
 
-local function init()
-    log.info("init!")
-    require("./globals")
-    ---@diagnostic disable-next-line: redundant-parameter
-    items = require("./items", items)
-    register_language()
-end
-
----@type table<string, fun(self:any): boolean?>
+---@type table<string, fun(self): boolean?>
 object_pre_hooks = {}
 
 gm.pre_code_execute(function(self, other, code, result, flags)
@@ -111,7 +103,7 @@ gm.pre_code_execute(function(self, other, code, result, flags)
     end
 end)
 
----@type table<string, fun(self:any)>
+---@type table<string, fun(self)>
 object_post_hooks = {}
 
 gm.post_code_execute(function(self, other, code, result, flags)
@@ -120,7 +112,47 @@ gm.post_code_execute(function(self, other, code, result, flags)
     end
 end)
 
-object_pre_hooks["gml_Object_oStartMenu_Step_2"] = function()
-    object_pre_hooks["gml_Object_oStartMenu_Step_2"] = nil
-    init()
+local function init()
+    log.info("init!")
+    require("./globals")
+    ---@diagnostic disable-next-line: redundant-parameter
+    items = require("./items", items)
+    register_language()
+    hot_reloading = true
 end
+
+log.info("hot_reloading?")
+log.info(hot_reloading)
+if hot_reloading then
+    init()
+else
+    object_pre_hooks["gml_Object_oStartMenu_Step_2"] = function()
+        object_pre_hooks["gml_Object_oStartMenu_Step_2"] = nil
+        init()
+    end
+end
+
+callback_names = gm.variable_global_get("callback_names")
+for index, value in ipairs(callback_names) do
+    log.info(value)
+end
+
+---@type table<string, fun(self, other, result, args): boolean?>
+pre_callback_hooks = {}
+
+gm.pre_script_hook(gm.constants.callback_execute, function (self, other, result, args)
+    local hook = pre_callback_hooks[args[1].value]
+    if hook then
+        return hook(self, other, result, args)
+    end
+end)
+
+---@type table<string, fun(self, other, result, args)>
+post_callback_hooks = {}
+
+gm.post_script_hook(gm.constants.callback_execute, function (self, other, result, args)
+    local hook = post_callback_hooks[args[1].value]
+    if hook then
+        hook(self, other, result, args)
+    end
+end)
