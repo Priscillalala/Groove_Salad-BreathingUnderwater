@@ -23,7 +23,7 @@ if not boomerang then
             boomerang = {
                 name = "Boomerang",
                 pickup = "Search and destroy.",
-                description = "<b>Collecting an item</c> increases <y>movement speed</c> by <b>20% <c_stack>(+20% per stack)</c> for <b>15 seconds</c>.",
+                description = "<y>9%</c> chance to toss a <y>boomerang</c> with your <b>basic attacks</c>. Pierces enemies for <y>100% <c_stack>(+100% per stack) <y>TOTAL damage</c> before returning.",
                 destination = "going here",
                 date = "5/01/2056",
                 story = "blah blah blah"
@@ -32,14 +32,17 @@ if not boomerang then
     }
 end
 
+local is_boomerang_identifier = namespace .. "-is_boomerang"
+
 ---[[
 gm.post_script_hook(gm.constants.skill_util_update_heaven_cracker, function(self, other, result, args)
-    log.info("skill_util_update_heaven_cracker: " .. #args)
     local actor = args[1].value
+    local stack = get(actor.inventory_item_stack, boomerang.id)
+    if not stack or stack <= 0 or gm.random(100) > 9 then
+        return
+    end
     local damage = args[2].value
     local xscale = args[3].value or actor.image_xscale
-    log.info("hi")
-    log.info(gm.constants.oChefKnife)
     local instance = gm.instance_create(actor.x, actor.y, gm.constants.oChefKnife)
     if xscale >= 0 then
         instance.direction = 0
@@ -47,41 +50,47 @@ gm.post_script_hook(gm.constants.skill_util_update_heaven_cracker, function(self
         instance.direction = 180
     end
     log.info(instance.direction)
-    instance.damage_coeff = damage
+    instance.damage_coeff = damage * stack
     instance.parent = actor
     instance.team = actor.team
     instance.sprite_index = gm.constants.sBuffDroneEmpower
-    instance.is_boomerang = true
+    instance[is_boomerang_identifier] = true
 end)
 --]]
 
-local prevent_line_draw = false
+local is_boomerang = false
 
-log.info(gm.constants.draw_line_width_colour)
 gm.pre_script_hook(gm.constants.draw_line_width_colour, function(self, other, result, args)
-    if prevent_line_draw then
+    if is_boomerang then
         return false
     end
 end)
 
+gm.pre_script_hook(gm.constants.fire_direct, function(self, other, result, args)
+    if is_boomerang then
+        args[1].value = 2
+        args[6].value = gm.constants.sSparks11
+    end
+end)
+
 object_pre_hooks["gml_Object_oChefKnife_Draw_0"] = function (self)
-    if self.is_boomerang then
-        log.info("is boomerang")
-        prevent_line_draw = true
+    if self[is_boomerang_identifier] then
+        is_boomerang = true
     end
 end
 
 object_post_hooks["gml_Object_oChefKnife_Draw_0"] = function (self)
-    prevent_line_draw = false
+    is_boomerang = false
 end
 
---[[
-gm.post_script_hook(gm.constants.instance_create, function(self, other, result, args)
-    log.info("instance_create: " .. #args)
-    for index, value in ipairs(args) do
-       log.info(value.value)
+object_pre_hooks["gml_Object_oChefKnife_Collision_pActorCollisionBase"] = function (self)
+    if self[is_boomerang_identifier] then
+        is_boomerang = true
     end
-end)
---]]
+end
+
+object_post_hooks["gml_Object_oChefKnife_Collision_pActorCollisionBase"] = function (self)
+    is_boomerang = false
+end
 
 return boomerang
