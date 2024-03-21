@@ -8,20 +8,20 @@ if not speedOnPickup then
     set(item, CLASS_ITEM.tier, ITEM_TIER.common)
     set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_utility)
 
-    local sMonkeyMask = load_sprite("sXray.png", 20, 20)
-    set(item, CLASS_ITEM.sprite_id, sMonkeyMask)
-    gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sMonkeyMask)
+    local sRecord = load_sprite("sRecord.png", 17, 17)
+    set(item, CLASS_ITEM.sprite_id, sRecord)
+    gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sRecord)
 
-    speedOnPickup.log_id = gm.item_log_create(namespace, identifier, 0, sMonkeyMask)
+    speedOnPickup.log_id = gm.item_log_create(namespace, identifier, 0, sRecord)
     local item_log = get(class_item_log, speedOnPickup.log_id)
     set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
-
     set(item, CLASS_ITEM.item_log_id, speedOnPickup.log_id)
 
     speedOnPickup.buff_id = gm.buff_create(namespace, "speedOnPickupBuff")
     local buff = get(class_buff, speedOnPickup.buff_id)
-    set(buff, CLASS_BUFF.icon_sprite, load_sprite("sBuffRage.png", 12, 8))
+    set(buff, CLASS_BUFF.icon_sprite, load_sprite("sBuffRecord.png", 8, 10, 2))
     set(buff, CLASS_BUFF.show_icon, true)
+    set(buff, CLASS_BUFF.icon_frame_speed, 0.03333)
     local paulsGoatHoof = get(class_item, 17)
     if paulsGoatHoof then
         local effect_display = gm["@@NewGMLObject@@"](gm.constants.EffectDisplayFunction)
@@ -32,7 +32,7 @@ if not speedOnPickup then
     add_language {
         item = {
             speedOnPickup = {
-                name = "Speed on pickup",
+                name = "Record",
                 pickup = "Move faster when collecting items.",
                 description = "<b>Collecting an item</c> increases <y>movement speed</c> by <b>20% <c_stack>(+20% per stack)</c> for <b>15 seconds</c>.",
                 destination = "going here",
@@ -46,10 +46,6 @@ end
 local onPickupCollected = gm.array_get_index(callback_names, "onPickupCollected")
 
 post_callback_hooks[onPickupCollected] = function (self, other, result, args)
-    log.info("pickup collected")
-    for index, value in ipairs(args) do
-        log.info(value.value)
-    end
     local pickup = args[2].value
     local player = args[3].value
     if pickup.equipment_id and pickup.equipment_id >= 0 and player.inventory_equipment and player.inventory_equipment >= 0 then
@@ -68,16 +64,6 @@ gm.post_script_hook(gm.constants.recalculate_stats, function(self, other, result
         local item_stack = get(self.inventory_item_stack, speedOnPickup.id)
         self.pHmax = self.pHmax + (self.pHmax_base * 0.2 * item_stack)
     end
-end)
---]]
-
---[[
-gm.post_script_hook(gm.constants.treasure_weights_roll_pickup, function(self, other, result, args)
-    log.info("treasure_weights_roll_pickup: " .. #args)
-    for index, value in ipairs(args) do
-       log.info(value.value)
-    end
-    log.info("result: " .. result.value)
 end)
 --]]
 
