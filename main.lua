@@ -1,3 +1,15 @@
+local guid = _ENV["!guid"]
+
+if _G[guid] then
+    log.info("reloading:")
+    local this = _ENV["!this"]
+    _ENV = _G[guid]
+    _ENV["!this"] = this
+else
+    _G[guid] = _ENV
+    log.info("first time?")
+end
+
 ---@param array any
 ---@param index integer
 ---@return unknown
