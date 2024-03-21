@@ -133,9 +133,6 @@ else
 end
 
 callback_names = gm.variable_global_get("callback_names")
-for index, value in ipairs(callback_names) do
-    log.info(value)
-end
 
 ---@type table<string, fun(self, other, result, args): boolean?>
 pre_callback_hooks = {}
