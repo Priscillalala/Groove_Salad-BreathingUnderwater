@@ -19,7 +19,7 @@ if not speedOnPickup then
 
     speedOnPickup.buff_id = gm.buff_create(namespace, "speedOnPickupBuff")
     local buff = get(class_buff, speedOnPickup.buff_id)
-    set(buff, CLASS_BUFF.icon_sprite, load_sprite("sBuffRecord.png", 8, 10, 2))
+    set(buff, CLASS_BUFF.icon_sprite, load_sprite("sBuffRecord.png", 8, 9, 2))
     set(buff, CLASS_BUFF.show_icon, true)
     set(buff, CLASS_BUFF.icon_frame_speed, 0.03333)
     local paulsGoatHoof = get(class_item, 17)

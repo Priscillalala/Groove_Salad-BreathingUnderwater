@@ -1,3 +1,4 @@
+---[[
 local guid = _ENV["!guid"]
 
 if _G[guid] then
@@ -9,6 +10,7 @@ if _G[guid] then
 end
 
 _G[guid] = _ENV
+--]]
 
 ---@param array any
 ---@param index integer
