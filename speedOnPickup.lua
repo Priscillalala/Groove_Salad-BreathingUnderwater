@@ -22,12 +22,18 @@ if not speedOnPickup then
     local buff = get(class_buff, speedOnPickup.buff_id)
     set(buff, CLASS_BUFF.icon_sprite, load_sprite("sBuffRage.png", 12, 8))
     set(buff, CLASS_BUFF.show_icon, true)
+    local paulsGoatHoof = get(class_item, 17)
+    if paulsGoatHoof then
+        local effect_display = gm["@@NewGMLObject@@"](gm.constants.EffectDisplayFunction)
+        effect_display.draw_script = get(paulsGoatHoof, CLASS_ITEM.effect_display).draw_script
+        set(buff, CLASS_BUFF.effect_display, effect_display)
+    end
 
     add_language {
         item = {
             speedOnPickup = {
                 name = "Speed on pickup",
-                pickup = "Move faster after collecting an item.",
+                pickup = "Move faster when collecting items.",
                 description = "<b>Collecting an item</c> increases <y>movement speed</c> by <b>20% <c_stack>(+20% per stack)</c> for <b>15 seconds</c>.",
                 destination = "going here",
                 date = "5/01/2056",

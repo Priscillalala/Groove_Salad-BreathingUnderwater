@@ -6,10 +6,9 @@ if _G[guid] then
     for key, value in pairs(_G[guid]) do
         _ENV[key] = value
     end
-else
-    log.info("first time?")
-    _G[guid] = _ENV
 end
+
+_G[guid] = _ENV
 
 ---@param array any
 ---@param index integer
