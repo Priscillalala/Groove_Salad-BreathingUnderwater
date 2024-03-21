@@ -15,7 +15,7 @@ if not items then
                         if instance.object_index == gm.constants.oP then
                             local item = get(class_item, module.id)
                             --gm.item_give(instance, test_item_id, 1, 0)
-                            gm.item_pickup_create(instance.x, instance.y, 1, get(item, CLASS_ITEM.object_id), 0).item_stack_kind = 1
+                            gm.item_pickup_create(instance.x, instance.y, 1, get(item, CLASS_ITEM.object_id), 0)
                             break
                         end
                     end
@@ -29,7 +29,7 @@ if not items then
                     for _, instance in ipairs(gm.CInstance.instances_active) do
                         if instance.object_index == gm.constants.oP then
                             --gm.item_give(instance, test_item_id, 1, 0)
-                            gm.item_pickup_create(instance.x, instance.y, 1, get(item, CLASS_ITEM.object_id), 0).item_stack_kind = 1
+                            gm.item_pickup_create(instance.x, instance.y, 1, get(item, CLASS_ITEM.object_id), 0)
                             break
                         end
                     end
