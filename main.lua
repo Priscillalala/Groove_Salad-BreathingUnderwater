@@ -2,12 +2,13 @@ local guid = _ENV["!guid"]
 
 if _G[guid] then
     log.info("reloading:")
-    local this = _ENV["!this"]
-    _ENV = _G[guid]
-    _ENV["!this"] = this
+    _G[guid]["!this"] = _ENV["!this"]
+    for key, value in pairs(_G[guid]) do
+        _ENV[key] = value
+    end
 else
-    _G[guid] = _ENV
     log.info("first time?")
+    _G[guid] = _ENV
 end
 
 ---@param array any

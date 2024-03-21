@@ -32,8 +32,6 @@ if not boomerang then
     }
 end
 
-log.info(gm.constants.skill_util_facing_direction)
-
 ---[[
 gm.post_script_hook(gm.constants.skill_util_update_heaven_cracker, function(self, other, result, args)
     log.info("skill_util_update_heaven_cracker: " .. #args)
