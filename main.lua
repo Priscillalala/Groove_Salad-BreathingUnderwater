@@ -1,3 +1,5 @@
+require("./language")
+
 ---[[
 local guid = _ENV["!guid"]
 
@@ -52,10 +54,12 @@ local function register_language()
     end
 end
 
+--[[
 gm.post_script_hook(gm.constants.translate_load_file, function(self, other, result, args)
     log.info("translate_load_file")
     register_language()
 end)
+--]]
 
 local plugin_path = _ENV["!plugins_mod_folder_path"]
 
@@ -99,6 +103,24 @@ gm.post_script_hook(gm.constants.object_set_sprite_w, function(self, other, resu
 end)
 --]]
 
+--[[
+gm.post_script_hook(gm.constants.string_read_file, function(self, other, result, args)
+   log.info("string_read_file: " .. #args)
+   for index, value in ipairs(args) do
+      log.info(value.value)
+   end
+end)
+--]]
+
+--[[
+    gm.post_script_hook(gm.constants.translate_load_file_internal, function(self, other, result, args)
+        log.info("translate_load_file_internal: " .. #args)
+        for index, value in ipairs(args) do
+           log.info(value.value)
+        end
+     end)
+     --]]
+
 ---[[
 gm.post_script_hook(gm.constants.init_actor_default, function(self, other, result, args)
     local count_buff = gm.variable_global_get("count_buff")
@@ -131,7 +153,7 @@ local function init()
     require("./globals")
     ---@diagnostic disable-next-line: redundant-parameter
     items = require("./items", items)
-    register_language()
+    --register_language()
     hot_reloading = true
 end
 
