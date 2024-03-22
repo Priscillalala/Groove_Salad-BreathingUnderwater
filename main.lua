@@ -1,4 +1,5 @@
 require("./language")
+require("./resources")
 
 ---[[
 local guid = _ENV["!guid"]
@@ -34,19 +35,6 @@ gm.post_script_hook(gm.constants.translate_load_file, function(self, other, resu
     register_language()
 end)
 --]]
-
-local plugin_path = _ENV["!plugins_mod_folder_path"]
-
----@param local_path string
----@param x_orig integer
----@param y_orig integer
----@param sub_image_number integer?
----@return number
-function load_sprite(local_path, x_orig, y_orig, sub_image_number)
-    return gm.sprite_add(path.combine(plugin_path, local_path), sub_image_number or 1, false, false, x_orig, y_orig)
-end
-
-
 
 --[[
 gm.post_script_hook(gm.constants.buff_create, function(self, other, result, args)

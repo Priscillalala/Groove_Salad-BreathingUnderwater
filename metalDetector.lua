@@ -8,7 +8,7 @@ if not metalDetector then
     set(item, CLASS_ITEM.tier, ITEM_TIER.uncommon)
     set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_utility)
 
-    local sMonkeyMask = load_sprite("sXray.png", 20, 20)
+    local sMonkeyMask = load_sprite("sXray", 20, 20)
     set(item, CLASS_ITEM.sprite_id, sMonkeyMask)
     gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sMonkeyMask)
 

@@ -8,7 +8,7 @@ if not speedOnPickup then
     set(item, CLASS_ITEM.tier, ITEM_TIER.common)
     set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_utility)
 
-    local sRecord = load_sprite("sRecord.png", 17, 17)
+    local sRecord = load_sprite("sRecord", 17, 17)
     set(item, CLASS_ITEM.sprite_id, sRecord)
     gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sRecord)
 
@@ -19,7 +19,7 @@ if not speedOnPickup then
 
     speedOnPickup.buff_id = gm.buff_create(namespace, "speedOnPickupBuff")
     local buff = get(class_buff, speedOnPickup.buff_id)
-    set(buff, CLASS_BUFF.icon_sprite, load_sprite("sBuffRecord.png", 8, 9, 2))
+    set(buff, CLASS_BUFF.icon_sprite, load_sprite("sBuffRecord", 8, 9, 2))
     set(buff, CLASS_BUFF.show_icon, true)
     set(buff, CLASS_BUFF.icon_frame_speed, 0.03333)
     local paulsGoatHoof = get(class_item, 17)

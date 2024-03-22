@@ -8,7 +8,7 @@ if not xray then
     set(item, CLASS_ITEM.tier, ITEM_TIER.rare)
     set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_utility)
 
-    local sXray = load_sprite("sXray.png", 15, 16)
+    local sXray = load_sprite("sXray", 15, 16)
     set(item, CLASS_ITEM.sprite_id, sXray)
     gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sXray)
 

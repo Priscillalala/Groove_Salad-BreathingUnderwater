@@ -8,7 +8,7 @@ if not monkeyMask then
     set(item, CLASS_ITEM.tier, ITEM_TIER.rare)
     set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_damage)
 
-    local sMonkeyMask = load_sprite("sMonkeyMask.png", 20, 20)
+    local sMonkeyMask = load_sprite("sMonkeyMask", 20, 20)
     set(item, CLASS_ITEM.sprite_id, sMonkeyMask)
     gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sMonkeyMask)
 
@@ -20,7 +20,7 @@ if not monkeyMask then
 
     monkeyMask.rage_id = gm.buff_create(namespace, "rage")
     local rage = get(class_buff, monkeyMask.rage_id)
-    set(rage, CLASS_BUFF.icon_sprite, load_sprite("sBuffRage.png", 12, 8))
+    set(rage, CLASS_BUFF.icon_sprite, load_sprite("sBuffRage", 12, 8))
     set(rage, CLASS_BUFF.show_icon, true)
 end
 

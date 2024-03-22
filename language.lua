@@ -1,5 +1,4 @@
-local plugin_path = _ENV["!plugins_mod_folder_path"]
-local language_path = path.combine(plugin_path, "language")
+local language_path = path.combine(_ENV["!plugins_mod_folder_path"], "language")
 local fallback_language = "english"
 
 local function try_load_language(language)
