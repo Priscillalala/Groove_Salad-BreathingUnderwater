@@ -77,6 +77,15 @@ gm.post_script_hook(gm.constants.object_set_sprite_w, function(self, other, resu
 end)
 --]]
 
+--[[
+gm.post_script_hook(gm.constants.translate_load_file, function(self, other, result, args)
+   log.info("translate_load_file: " .. #args)
+   for index, value in ipairs(args) do
+      log.info(value.value)
+   end
+end)
+--]]
+
 gm.post_script_hook(gm.constants.init_actor_default, function(self, other, result, args)
     local count_buff = gm.variable_global_get("count_buff")
     if #self.buff_stack < count_buff then

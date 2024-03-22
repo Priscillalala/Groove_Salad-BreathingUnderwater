@@ -4,10 +4,10 @@ local fallback_language = "english"
 
 local function try_load_language(language)
     local path = path.combine(language_path, language .. ".json")
-    local file_string = gm.string_read_file(path)
-    if file_string and file_string ~= "" then
-        local language_json = gm.json_parse(file_string)
-        gm.translate_load_file_internal(gm.variable_global_get("_language_map"), language_json, "")
+    if gm.file_exists(path) > 0 then
+        gm.translate_load_file(gm.variable_global_get("_language_map"), path)
+    else
+        log.warning("No " .. language .. " translation found :(")
     end
 end
 

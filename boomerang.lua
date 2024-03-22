@@ -36,7 +36,6 @@ gm.post_script_hook(gm.constants.skill_util_update_heaven_cracker, function(self
     else
         instance.direction = 180
     end
-    log.info(instance.direction)
     instance.damage_coeff = damage * stack
     instance.parent = actor
     instance.team = actor.team
