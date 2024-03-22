@@ -7,6 +7,38 @@
             "destination" : "going here",
             "date" : "5/01/2056",
             "story" : "blah blah blah"
+        },
+        "metalDetector" : {
+            "name" : "Metal Detector",
+            "pickup" : "Discover bonus temporary items when activating the Teleporter.",
+            "description" : "On <b>activating the Teleporter</c>, discover <b>3 temporary items</c> <c_stack>(increase rarity per stack)</c>. Lasts <y>90 seconds</c>.",
+            "destination" : "going here",
+            "date" : "5/01/2056",
+            "story" : "blah blah blah"
+        },
+        "monkeyMask" : {
+            "name" : "Second Soul",
+            "pickup" : "Increase attack speed and guarantee Critical strikes after taking damage.",
+            "description" : "Gain <y>18% attack speed</c> and <y>100% critical strike chance</c> for <y>2 <c_stack>(+1 per stack) <y>seconds</c> after getting hurt.",
+            "destination" : "going here",
+            "date" : "5/01/2056",
+            "story" : "blah blah blah"
+        },
+        "speedOnPickup" : {
+            "name" : "Record",
+            "pickup" : "Move faster when collecting items.",
+            "description" : "<b>Collecting an item</c> increases <y>movement speed</c> by <b>20% <c_stack>(+20% per stack)</c> for <b>15 seconds</c>.",
+            "destination" : "going here",
+            "date" : "5/01/2056",
+            "story" : "blah blah blah"
+        },
+        "xray" : {
+            "name" : "X-ray Tube",
+            "pickup" : "Discover an additional item on boss kill.",
+            "description" : "<y>Boss monsters</c> yield an additional <b>1</c> <c_stack>(+1 per stack)</c> <b>items</c> on death.",
+            "destination" : "going here",
+            "date" : "5/01/2056",
+            "story" : "blah blah blah"
         }
     }
 }

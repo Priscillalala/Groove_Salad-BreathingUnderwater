@@ -17,19 +17,6 @@ if not boomerang then
     set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
 
     set(item, CLASS_ITEM.item_log_id, boomerang.log_id)
-
-    add_language {
-        item = {
-            boomerang = {
-                name = "Boomerang",
-                pickup = "Search and destroy.",
-                description = "<y>9%</c> chance to toss a <y>boomerang</c> with your <b>basic attacks</c>. Pierces enemies for <y>100% <c_stack>(+100% per stack) <y>TOTAL damage</c> before returning.",
-                destination = "going here",
-                date = "5/01/2056",
-                story = "blah blah blah"
-            }
-        }
-    }
 end
 
 local is_boomerang_identifier = namespace .. "-is_boomerang"

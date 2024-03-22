@@ -17,19 +17,6 @@ if not xray then
     set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
 
     set(item, CLASS_ITEM.item_log_id, xray.log_id)
-
-    add_language {
-        item = {
-            xray = {
-                name = "X-ray Tube",
-                pickup = "Discover an additional item on boss kill.",
-                description = "<y>Boss monsters</c> yield an additional <b>1</c> <c_stack>(+1 per stack)</c> <b>items</c> on death.",
-                destination = "going here",
-                date = "5/01/2056",
-                story = "blah blah blah"
-            }
-        }
-    }
 end
 
 local lock = false

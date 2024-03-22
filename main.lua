@@ -28,32 +28,6 @@ function set(array, index, value)
     gm.array_set(array, index, value)
 end
 
----@type table<string, string>
-local language = {}
-
----@param language_table table<string, table|string>
----@param root string?
-function add_language(language_table, root)
-    for key, value in pairs(language_table) do
-        if root then
-            key = root .. "." .. key
-        end
-        if type(value) == "table" then
-            add_language(value, key)
-        else
-            language[key] = value
-        end
-    end
-end
-
-local function register_language()
-    local _language_map = gm.variable_global_get("_language_map")
-    for key, value in pairs(language) do
-        log.info(key)
-        gm.ds_map_set(_language_map, key, value)
-    end
-end
-
 --[[
 gm.post_script_hook(gm.constants.translate_load_file, function(self, other, result, args)
     log.info("translate_load_file")
@@ -103,25 +77,6 @@ gm.post_script_hook(gm.constants.object_set_sprite_w, function(self, other, resu
 end)
 --]]
 
---[[
-gm.post_script_hook(gm.constants.string_read_file, function(self, other, result, args)
-   log.info("string_read_file: " .. #args)
-   for index, value in ipairs(args) do
-      log.info(value.value)
-   end
-end)
---]]
-
---[[
-    gm.post_script_hook(gm.constants.translate_load_file_internal, function(self, other, result, args)
-        log.info("translate_load_file_internal: " .. #args)
-        for index, value in ipairs(args) do
-           log.info(value.value)
-        end
-     end)
-     --]]
-
----[[
 gm.post_script_hook(gm.constants.init_actor_default, function(self, other, result, args)
     local count_buff = gm.variable_global_get("count_buff")
     if #self.buff_stack < count_buff then
@@ -153,7 +108,6 @@ local function init()
     require("./globals")
     ---@diagnostic disable-next-line: redundant-parameter
     items = require("./items", items)
-    --register_language()
     hot_reloading = true
 end
 

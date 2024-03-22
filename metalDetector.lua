@@ -17,19 +17,6 @@ if not metalDetector then
     set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
 
     set(item, CLASS_ITEM.item_log_id, metalDetector.log_id)
-
-    add_language {
-        item = {
-            metalDetector = {
-                name = "Metal Detector",
-                pickup = "Discover bonus temporary items when activating the Teleporter.",
-                description = "On <b>activating the Teleporter</c>, discover <b>3 temporary items</c> <c_stack>(increase rarity per stack)</c>. Lasts <y>90 seconds</c>.",
-                destination = "going here",
-                date = "5/01/2056",
-                story = "blah blah blah"
-            }
-        }
-    }
 end
 
 ---@param player any

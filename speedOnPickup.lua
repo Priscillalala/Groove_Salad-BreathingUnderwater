@@ -28,19 +28,6 @@ if not speedOnPickup then
         effect_display.draw_script = get(paulsGoatHoof, CLASS_ITEM.effect_display).draw_script
         set(buff, CLASS_BUFF.effect_display, effect_display)
     end
-
-    add_language {
-        item = {
-            speedOnPickup = {
-                name = "Record",
-                pickup = "Move faster when collecting items.",
-                description = "<b>Collecting an item</c> increases <y>movement speed</c> by <b>20% <c_stack>(+20% per stack)</c> for <b>15 seconds</c>.",
-                destination = "going here",
-                date = "5/01/2056",
-                story = "blah blah blah"
-            }
-        }
-    }
 end
 
 local onPickupCollected = gm.array_get_index(callback_names, "onPickupCollected")

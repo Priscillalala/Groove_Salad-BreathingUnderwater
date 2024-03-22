@@ -22,19 +22,6 @@ if not monkeyMask then
     local rage = get(class_buff, monkeyMask.rage_id)
     set(rage, CLASS_BUFF.icon_sprite, load_sprite("sBuffRage.png", 12, 8))
     set(rage, CLASS_BUFF.show_icon, true)
-
-    add_language {
-        item = {
-            monkeyMask = {
-                name = "Second Soul",
-                pickup = "Increase attack speed and guarantee Critical strikes after taking damage.",
-                description = "Gain <y>18% attack speed</c> and <y>100% critical strike chance</c> for <y>2 <c_stack>(+1 per stack) <y>seconds</c> after getting hurt.",
-                destination = "going here",
-                date = "5/01/2056",
-                story = "blah blah blah"
-            }
-        }
-    }
 end
 
 
