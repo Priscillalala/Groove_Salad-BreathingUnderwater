@@ -4,17 +4,6 @@ local sprites_path = path.combine(resources_path, "sprites")
 ---@type table<string, string>
 local full_sprite_paths = {}
 
-local function discover_sprites(directory)
-    for _, file in ipairs(path.get_files(directory)) do
-        log.info(path.stem(file))
-        full_sprite_paths[path.stem(file)] = file
-    end
-    for _, sub_directory in ipairs(path.get_directories(directory)) do
-        log.info(sub_directory)
-        discover_sprites(sub_directory)
-    end
-end
-
 for _, file in ipairs(path.get_files(sprites_path)) do
     log.info(path.stem(file))
     full_sprite_paths[path.stem(file)] = file

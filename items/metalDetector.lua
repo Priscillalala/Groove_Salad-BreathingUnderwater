@@ -8,11 +8,11 @@ if not metalDetector then
     set(item, CLASS_ITEM.tier, ITEM_TIER.uncommon)
     set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_utility)
 
-    local sMonkeyMask = load_sprite("sXray", 20, 20)
-    set(item, CLASS_ITEM.sprite_id, sMonkeyMask)
-    gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sMonkeyMask)
+    local sMetalDetector = load_sprite("sMetalDetector", 17, 17)
+    set(item, CLASS_ITEM.sprite_id, sMetalDetector)
+    gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sMetalDetector)
 
-    metalDetector.log_id = gm.item_log_create(namespace, identifier, 2, sMonkeyMask)
+    metalDetector.log_id = gm.item_log_create(namespace, identifier, 2, sMetalDetector)
     local item_log = get(class_item_log, metalDetector.log_id)
     set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
 
