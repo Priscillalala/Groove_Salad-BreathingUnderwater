@@ -8,6 +8,14 @@
             "date" : "5/01/2056",
             "story" : "blah blah blah"
         },
+        "bouquet" : {
+            "name" : "Bouquet",
+            "pickup" : "All stats up!",
+            "description" : "Increase damage by <y>1</c> <c_stack>(+1 per stack)</c>.\nGain <y>2% critical chance <c_stack>(+2% per stack)</c>.\n<g>Increase armor</c> by <g>3 <c_stack>(+3 per stack)</c>.\nIncrease <y>attack speed</c> by <y>4% <c_stack>(+4% per stack)</c>.\nIncrease <g>maximum health</c> by <g>5 <c_stack>(+5 per stack)</c>.\nIncrease <y>movement speed</c> by <b>0.6 km/h <c_stack>(+0.6 km/h per stack)</c>.\nIncrease <g>health regeneration</c> by <g>0.07 <c_stack>(+0.07 per stack) <g>hp</c> per second.",
+            "destination" : "going here",
+            "date" : "5/01/2056",
+            "story" : "blah blah blah"
+        },
         "metalDetector" : {
             "name" : "Metal Detector",
             "pickup" : "Unearth bonus temporary items when activating the Teleporter.",

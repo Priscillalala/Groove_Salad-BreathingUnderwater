@@ -18,24 +18,51 @@ if not bouquet then
     set(item, CLASS_ITEM.item_log_id, bouquet.log_id)
 end
 
+local bonus_maxhp_base
+
+---[[
+gm.pre_script_hook(gm.constants.recalculate_stats, function(self, other, result, args)
+    local item_stack = get(self.inventory_item_stack, bouquet.id)
+    if item_stack > 0 then
+        bonus_maxhp_base = 5 * item_stack
+        self.maxhp_base = self.maxhp_base + bonus_maxhp_base
+    end
+end)
+--]]
+
 ---[[
 gm.post_script_hook(gm.constants.recalculate_stats, function(self, other, result, args)
     local item_stack = get(self.inventory_item_stack, bouquet.id)
     if item_stack > 0 then
-        --damage (flat)
-        --attack speed (basically flat)
-        --move speed
-        --crit chance (flat kinda)
-        --regen (flat)
-        --armor (flat)
-        --max hp (flat)
+        --damage (flat) +1  (1!)
+        --attack speed (basically flat) NOT +1 (4)
+        --move speed NOT +1 (6)
+        --crit chance (flat kinda) +1? (2)
+        --regen (flat) NOT +1 (0.07)
+        --armor (flat) +1   (3)
+        --max hp (flat) +  (5!)
+
+        --[[
+            +1 damage (unknown)
+            +2 crit chance (~25% glasses)
+            +3 armor (~37% of root)
+            +4% attack speed (33% of syringe)
+            +5 max hp (unknown)
+            +0.06 move speed (14% of hoof)
+            +0.07 regen (8.3% of vial)
+            total 119% + 2 unknown (estimated around 30%)
+            about 150% of the sum of its parts
+        ]]
         self.damage = self.damage + item_stack
-        self.attack_speed = self.attack_speed + item_stack
-        self.pHmax = self.pHmax + (self.pHmax_base * 0.2 * item_stack)
-        self.critical_chance = self.critical_chance + item_stack
-        self.hp_regen = self.hp_regen + 0.003
-        self.armor = self.armor + item_stack
-        self.maxhp = self.maxhp + item_stack
+        self.critical_chance = self.critical_chance + 2 * item_stack
+        self.armor = self.armor + 3 * item_stack
+        self.attack_speed = self.attack_speed + 0.04 * item_stack
+        self.pHmax = self.pHmax + 0.06 * item_stack
+        self.hp_regen = self.hp_regen + 0.07 * item_stack / 60
+    end
+    if bonus_maxhp_base then
+        self.maxhp_base = self.maxhp_base - bonus_maxhp_base
+        bonus_maxhp_base = nil
     end
 end)
 --]]

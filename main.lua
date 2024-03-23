@@ -37,8 +37,8 @@ end)
 --]]
 
 --[[
-gm.post_script_hook(gm.constants.buff_create, function(self, other, result, args)
-   log.info("buff_create: " .. #args)
+gm.post_script_hook(gm.constants.item_create, function(self, other, result, args)
+   log.info("item_create: " .. #args)
    for index, value in ipairs(args) do
       log.info(value.value)
    end
