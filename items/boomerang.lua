@@ -8,11 +8,11 @@ if not boomerang then
     set(item, CLASS_ITEM.tier, ITEM_TIER.common)
     set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_damage)
 
-    local sMonkeyMask = load_sprite("sXray", 20, 20)
-    set(item, CLASS_ITEM.sprite_id, sMonkeyMask)
-    gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sMonkeyMask)
+    local sBoomerang = load_sprite("sBoomerang", 18, 18)
+    set(item, CLASS_ITEM.sprite_id, sBoomerang)
+    gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sBoomerang)
 
-    boomerang.log_id = gm.item_log_create(namespace, identifier, 0, sMonkeyMask)
+    boomerang.log_id = gm.item_log_create(namespace, identifier, 0, sBoomerang)
     local item_log = get(class_item_log, boomerang.log_id)
     set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
 
@@ -20,6 +20,7 @@ if not boomerang then
 end
 
 local is_boomerang_identifier = namespace .. "-is_boomerang"
+local sBoomerangThrown = load_sprite("sBoomerangThrown", 18, 18)
 
 ---[[
 gm.post_script_hook(gm.constants.skill_util_update_heaven_cracker, function(self, other, result, args)
@@ -39,7 +40,7 @@ gm.post_script_hook(gm.constants.skill_util_update_heaven_cracker, function(self
     instance.damage_coeff = damage * stack
     instance.parent = actor
     instance.team = actor.team
-    instance.sprite_index = gm.constants.sBuffDroneEmpower
+    instance.sprite_index = sBoomerangThrown
     instance[is_boomerang_identifier] = true
 end)
 --]]

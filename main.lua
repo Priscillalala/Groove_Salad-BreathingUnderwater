@@ -1,7 +1,7 @@
 require("./language")
 require("./resources")
 
----[[
+--[[
 local guid = _ENV["!guid"]
 
 if _G[guid] then
