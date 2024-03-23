@@ -22,18 +22,21 @@ end
 ---@param player any
 ---@param stack integer
 local function create_pickups_for_player(player, stack)
+    gm.item_set_dibs(player)
     for i = 1, 3 do
         local pickup_object_id = gm.treasure_weights_roll_pickup(29)
         for _ = 1, stack - 1 do
             local other_pickup_object_id = gm.treasure_weights_roll_pickup(29)
             local item = get(class_item, gm.object_to_item(pickup_object_id))
             local other_item = get(class_item, gm.object_to_item(other_pickup_object_id))
-            if (not item) or (other_item and get(other_item, CLASS_ITEM.tier) > get(item, CLASS_ITEM.tier)) then
+            if not item or (other_item and get(other_item, CLASS_ITEM.tier) > get(item, CLASS_ITEM.tier)) then
                 pickup_object_id = other_pickup_object_id
                 log.info("upgrade pickup!")
             end
         end
-        local pickup = gm.item_pickup_create(player.x, player.y, 1, pickup_object_id, 0)
+        --local pickup = gm.item_pickup_create(player.x + 20, player.y, true, pickup_object_id)--, 100)
+        local pickup = gm.instance_create(player.x + 50 * player.image_xscale * i, player.y, pickup_object_id)
+        pickup.xstart = player.x
         pickup.item_stack_kind = 1
     end
 end
