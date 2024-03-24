@@ -33,10 +33,8 @@ local function create_pickups_for_player(player, stack)
             local other_item = get(class_item, gm.object_to_item(other_pickup_object_id))
             if not item or (other_item and get(other_item, CLASS_ITEM.tier) > get(item, CLASS_ITEM.tier)) then
                 pickup_object_id = other_pickup_object_id
-                log.info("upgrade pickup!")
             end
         end
-        --local pickup = gm.item_pickup_create(player.x + 20, player.y, true, pickup_object_id)--, 100)
         local pickup = gm.instance_create(player.x + 50 * player.image_xscale * i, player.y, pickup_object_id)
         pickup.xstart = player.x
         pickup.item_stack_kind = 1
@@ -57,26 +55,5 @@ object_pre_hooks["gml_Object_pTeleporter_Step_2"] = function (self)
         end
     end
 end
-
---[[
-gm.post_script_hook(gm.constants.recalculate_stats, function(self, other, result, args)
-    local item_stack = get(self.inventory_item_stack, metalDetector.id)
-    if item_stack > 0 then
-        self.critical_chance = self.critical_chance + 100
-        self.attack_speed = self.attack_speed + 0.18
-        self.pHmax = 10
-    end
-end)
---]]
-
---[[
-gm.post_script_hook(gm.constants.treasure_weights_roll_pickup, function(self, other, result, args)
-    log.info("treasure_weights_roll_pickup: " .. #args)
-    for index, value in ipairs(args) do
-       log.info(value.value)
-    end
-    log.info("result: " .. result.value)
-end)
---]]
 
 return metalDetector

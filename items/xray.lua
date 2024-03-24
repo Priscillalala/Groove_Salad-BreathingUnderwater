@@ -40,24 +40,4 @@ gm.post_script_hook(gm.constants.item_drop_boss, function(self, other, result, a
 end)
 --]]
 
---[[
-gm.post_script_hook(gm.constants.recalculate_stats, function(self, other, result, args)
-    local item_stack = get(self.inventory_item_stack, xray.id)
-    if item_stack > 0 then
-        self.critical_chance = self.critical_chance + 100
-        self.attack_speed = self.attack_speed + 0.18
-        self.pHmax = 10
-    end
-end)
---]]
-
---[[
-gm.pre_script_hook(gm.constants.actor_proc_on_damage, function(self, other, result, args)
-    local item_stack = get(self.inventory_item_stack, xray.id)
-    if item_stack > 0 then
-        gm.apply_buff(self, xray.rage_id, 60 + 60 * item_stack)
-    end
-end)
---]]
-
 return xray
