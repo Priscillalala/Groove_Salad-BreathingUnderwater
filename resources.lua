@@ -5,7 +5,6 @@ local sprites_path = path.combine(resources_path, "sprites")
 local full_sprite_paths = {}
 
 for _, file in ipairs(path.get_files(sprites_path)) do
-    log.info(path.stem(file))
     full_sprite_paths[path.stem(file)] = file
 end
 
