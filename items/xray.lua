@@ -6,7 +6,7 @@ if not xray then
     xray.id = gm.item_create(namespace, identifier)
     local item = get(class_item, xray.id)
     set(item, CLASS_ITEM.tier, ITEM_TIER.rare)
-    set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_utility)
+    set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_utility | LOOT_TAG.item_blacklist_engi_turrets)
 
     local sXray = load_sprite("sXray", 15, 16)
     set(item, CLASS_ITEM.sprite_id, sXray)
@@ -17,6 +17,8 @@ if not xray then
     set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
 
     set(item, CLASS_ITEM.item_log_id, xray.log_id)
+
+    add_item_to_loot_pool(item)
 end
 
 local lock = false

@@ -6,7 +6,7 @@ if not metalDetector then
     metalDetector.id = gm.item_create(namespace, identifier)
     local item = get(class_item, metalDetector.id)
     set(item, CLASS_ITEM.tier, ITEM_TIER.uncommon)
-    set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_utility)
+    set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_utility | LOOT_TAG.item_blacklist_engi_turrets)
 
     local sMetalDetector = load_sprite("sMetalDetector", 17, 17)
     set(item, CLASS_ITEM.sprite_id, sMetalDetector)
@@ -17,6 +17,8 @@ if not metalDetector then
     set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
 
     set(item, CLASS_ITEM.item_log_id, metalDetector.log_id)
+
+    add_item_to_loot_pool(item)
 end
 
 ---@param player any

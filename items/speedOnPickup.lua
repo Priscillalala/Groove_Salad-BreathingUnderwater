@@ -16,7 +16,10 @@ if not speedOnPickup then
     local item_log = get(class_item_log, speedOnPickup.log_id)
     set(item_log, CLASS_ITEM_LOG.token_priority, "item.mysteriousVial.priority")
     set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
+
     set(item, CLASS_ITEM.item_log_id, speedOnPickup.log_id)
+
+    add_item_to_loot_pool(item)
 
     speedOnPickup.buff_id = gm.buff_create(namespace, "speedOnPickupBuff")
     local buff = get(class_buff, speedOnPickup.buff_id)

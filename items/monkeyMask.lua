@@ -18,6 +18,8 @@ if not monkeyMask then
 
     set(item, CLASS_ITEM.item_log_id, monkeyMask.log_id)
 
+    add_item_to_loot_pool(item)
+
     monkeyMask.rage_id = gm.buff_create(namespace, "rage")
     local rage = get(class_buff, monkeyMask.rage_id)
     set(rage, CLASS_BUFF.icon_sprite, load_sprite("sBuffRage", 12, 8))

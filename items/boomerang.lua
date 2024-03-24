@@ -17,6 +17,8 @@ if not boomerang then
     set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
 
     set(item, CLASS_ITEM.item_log_id, boomerang.log_id)
+
+    add_item_to_loot_pool(item)
 end
 
 local is_boomerang_identifier = namespace .. "-is_boomerang"
