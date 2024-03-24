@@ -35,11 +35,12 @@ local english_path = path.combine(_ENV["!plugins_mod_folder_path"], "language", 
 ---@type string
 local file_string = gm.string_read_file(english_path)
 local substitutions = {
-    ["<y>"] = "$\\color{GoldenRod}\\textsf{",
-    ["<b>"] = "$\\color{Cerulean}\\textsf{",
-    ["<g>"] = "$\\color{Green}\\textsf{",
-    ["<r>"] = "$\\color{Maroon}\\textsf{",
-    ["<c_stack>"] = "$\\color{gray}\\textsf{",
+    --colors taken from the official wiki
+    ["<y>"] = "$\\color{#e5C962}\\textsf{",
+    ["<b>"] = "$\\color{#319ad2}\\textsf{",
+    ["<g>"] = "$\\color{#7eb686}\\textsf{",
+    ["<r>"] = "$\\color{#cf6666}\\textsf{",
+    ["<c_stack>"] = "$\\color{#808080}\\textsf{",
     ["</c>"] = "}$",
     ["%%"] = "\\\\%%"
 }

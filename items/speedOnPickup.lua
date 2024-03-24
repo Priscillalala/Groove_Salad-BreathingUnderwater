@@ -14,6 +14,7 @@ if not speedOnPickup then
 
     speedOnPickup.log_id = gm.item_log_create(namespace, identifier, 0, sRecord)
     local item_log = get(class_item_log, speedOnPickup.log_id)
+    set(item_log, CLASS_ITEM_LOG.token_priority, "item.mysteriousVial.priority")
     set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
     set(item, CLASS_ITEM.item_log_id, speedOnPickup.log_id)
 
