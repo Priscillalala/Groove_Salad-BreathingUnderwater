@@ -4,9 +4,9 @@
             "name" : "Boomerang",
             "pickup" : "Search and destroy.",
             "description" : "<y>9%</c> chance to throw a <y>boomerang</c> with your <b>basic attacks</c>. Pierces enemies for <y>100%</c> <c_stack>(+100% per stack)</c> <y>TOTAL damage</c> before returning.",
-            "destination" : "going here",
-            "date" : "5/01/2056",
-            "story" : "blah blah blah"
+            "destination" : "90766,\nRotwell,\nVenus",
+            "date" : "6/13/2056",
+            "story" : "*Just a toy.* Shouldn't be able to do any real damage. Might be a fun party trick though. If you don't want it, please give it to your uncle. I think he was starting a collection. Actually, it might have been your aunt.."
         },
         "bouquet" : {
             "name" : "Bouquet",
@@ -20,33 +20,33 @@
             "name" : "Metal Detector",
             "pickup" : "Unearth bonus temporary items when activating the Teleporter.",
             "description" : "On <b>activating the Teleporter</c>, unearth <b>3 temporary items</c> <c_stack>(increase rarity per stack)</c>. Lasts <y>90 seconds</c>.",
-            "destination" : "going here",
-            "date" : "5/01/2056",
-            "story" : "blah blah blah"
+            "destination" : "808 East Way,\nMerryridge,\nEarth",
+            "date" : "8/03/2056",
+            "story" : "Took this thing for a spin in my backyard and it was beeping like crazy! I just had new grass installed, though.. I think you'll get a kick out of it."
         },
         "monkeyMask" : {
             "name" : "Second Soul",
             "pickup" : "Increase attack speed and guarantee Critical strikes after taking damage.",
             "description" : "Gain <y>18% attack speed</c> and <y>100% critical strike chance</c> for <y>2</c> <c_stack>(+1 per stack)</c> <y>seconds</c> after getting hurt.",
-            "destination" : "going here",
+            "destination" : "99th Floor,\nCrumbling Tower,\nVenus",
             "date" : "5/01/2056",
-            "story" : "blah blah blah"
+            "story" : "Performance mask of a deceased singer. The surviving family claims it is haunted. They say it talks.. she talks. Needless to say, they were loathe to part with this family \"heirloom\", but I was very convincing. I have observed no abnormal activity but am requesting a stardard array of tests regardless. You can keep it if nothing pans out - fun item for the shelf, I guess. The eyes follow you like one of those paintings."
         },
         "speedOnPickup" : {
             "name" : "Record",
             "pickup" : "Move faster when collecting items.",
             "description" : "<b>Collecting an item</c> increases <y>movement speed</c> by <b>20%</c> <c_stack>(+20% per stack)</c> for <b>15 seconds</c>.",
-            "destination" : "going here",
-            "date" : "5/01/2056",
-            "story" : "blah blah blah"
+            "destination" : "Box 19\nSeon Gas Rig\nSaturn",
+            "date" : "3/01/2056",
+            "story" : "This is our song; remember? Back in high school.. how time flies! Hope your new job is panning out, [REDACTED] and I think about you every day. Much love! XOXO\n\n[Some details omitted to maintain customer anonymity]"
         },
         "xray" : {
             "name" : "X-ray Tube",
             "pickup" : "Discover an additional item on boss kill.",
             "description" : "<y>Boss monsters</c> yield an additional <b>1</c> <c_stack>(+1 per stack)</c> <b>items</c> on death.",
-            "destination" : "going here",
-            "date" : "5/01/2056",
-            "story" : "blah blah blah"
+            "destination" : "00041\nRad Lab\nBackwaters\nMars",
+            "date" : "11/08/2056",
+            "story" : "A true antique! These models deteorate pretty rapidly, but lucky for you, this one has never been put to work. Strange request though, are you planning to use it yourself..? This device is over 100 years old! I am sure the federacy would be more than willing to supply modern equipment for any *ethical* experiments. What are you up to, Doctor?"
         }
     }
 }
