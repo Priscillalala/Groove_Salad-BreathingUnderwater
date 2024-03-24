@@ -3,7 +3,7 @@
         "boomerang" : {
             "name" : "Boomerang",
             "pickup" : "Search and destroy.",
-            "description" : "<y>9%</c> chance to throw a <y>boomerang</c> with your <b>basic attacks</c>. Pierces enemies for <y>100% <c_stack>(+100% per stack) <y>TOTAL damage</c> before returning.",
+            "description" : "<y>9%</c> chance to throw a <y>boomerang</c> with your <b>basic attacks</c>. Pierces enemies for <y>100%</c> <c_stack>(+100% per stack)</c> <y>TOTAL damage</c> before returning.",
             "destination" : "going here",
             "date" : "5/01/2056",
             "story" : "blah blah blah"
@@ -27,7 +27,7 @@
         "monkeyMask" : {
             "name" : "Second Soul",
             "pickup" : "Increase attack speed and guarantee Critical strikes after taking damage.",
-            "description" : "Gain <y>18% attack speed</c> and <y>100% critical strike chance</c> for <y>2 <c_stack>(+1 per stack) <y>seconds</c> after getting hurt.",
+            "description" : "Gain <y>18% attack speed</c> and <y>100% critical strike chance</c> for <y>2</c> <c_stack>(+1 per stack)</c> <y>seconds</c> after getting hurt.",
             "destination" : "going here",
             "date" : "5/01/2056",
             "story" : "blah blah blah"
@@ -35,7 +35,7 @@
         "speedOnPickup" : {
             "name" : "Record",
             "pickup" : "Move faster when collecting items.",
-            "description" : "<b>Collecting an item</c> increases <y>movement speed</c> by <b>20% <c_stack>(+20% per stack)</c> for <b>15 seconds</c>.",
+            "description" : "<b>Collecting an item</c> increases <y>movement speed</c> by <b>20%</c> <c_stack>(+20% per stack)</c> for <b>15 seconds</c>.",
             "destination" : "going here",
             "date" : "5/01/2056",
             "story" : "blah blah blah"

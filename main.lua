@@ -1,3 +1,4 @@
+require("./debug")
 require("./language")
 require("./resources")
 
