@@ -24,7 +24,6 @@ end
 ---@param player any
 ---@param stack integer
 local function create_pickups_for_player(player, stack)
-    gm.item_set_dibs(player)
     for i = 1, 3 do
         local pickup_object_id = gm.treasure_weights_roll_pickup(29)
         for _ = 1, stack - 1 do
@@ -35,17 +34,15 @@ local function create_pickups_for_player(player, stack)
                 pickup_object_id = other_pickup_object_id
             end
         end
+        gm.item_set_dibs(player)
         local pickup = gm.instance_create(player.x + 50 * player.image_xscale * i, player.y, pickup_object_id)
         pickup.xstart = player.x
         pickup.item_stack_kind = 1
     end
 end
 
-object_pre_hooks["gml_Object_pTeleporter_Step_2"] = function (self)
-    if self.active == 0 or self.just_activated ~= 0 then
-        return
-    end
-    log.info("gml_Object_pTeleporter_Step_2")
+local function on_teleporter_activated()
+    log.info("Teleporter activated!")
     for _, instance in ipairs(gm.CInstance.instances_active) do
         if instance.object_index == gm.constants.oP and not instance.dead then
             local stack = get(instance.inventory_item_stack, metalDetector.id)
@@ -54,6 +51,20 @@ object_pre_hooks["gml_Object_pTeleporter_Step_2"] = function (self)
             end
         end
     end
+end
+
+object_pre_hooks["gml_Object_pTeleporter_Step_2"] = function (self)
+    if self.active == 0 or self.just_activated ~= 0 then
+        return
+    end
+    on_teleporter_activated()
+end
+
+object_pre_hooks["gml_Object_oCommand_Step_2"] = function (self)
+    if self.active == 0 or self.just_activated ~= 0 then
+        return
+    end
+    on_teleporter_activated()
 end
 
 return metalDetector
