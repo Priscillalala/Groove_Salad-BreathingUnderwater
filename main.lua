@@ -1,4 +1,9 @@
-require("./debug")
+if hot_reloading then
+    log.warning("Attempted a hot reload - this is temporarily disabled")
+    return
+end
+
+--require("./debug")
 require("./language")
 require("./resources")
 
