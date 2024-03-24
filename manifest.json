@@ -1,9 +1,9 @@
 ﻿{
 	"name": "BreathingUnderwater",
-	"version_number": "1.0.0",
-	"website_url": "",
-	"description": "Holding the interact button counts as repeated input",
+	"version_number": "0.0.0",
+	"website_url": "https://github.com/Priscillalala/Groove_Salad-BreathingUnderwater",
+	"description": "5 new items!",
 	"dependencies": [
-		"ReturnOfModding-ReturnOfModding-1.0.7"
+		"ReturnOfModding-ReturnOfModding-1.0.11"
 	]
 }
