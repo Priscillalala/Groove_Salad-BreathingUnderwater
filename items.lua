@@ -30,6 +30,7 @@ include_item("xray")
 include_item("metalDetector")
 include_item("speedOnPickup")
 include_item("boomerang")
+include_item("goldCandy")
 --include_item("bouquet")
 
 return items

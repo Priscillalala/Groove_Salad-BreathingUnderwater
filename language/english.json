@@ -16,6 +16,14 @@
             "date" : "5/01/2056",
             "story" : "blah blah blah"
         },
+        "goldCandy" : {
+            "name" : "Gold Candy",
+            "pickup" : "Gain $25. Spending gold heals you.",
+            "description" : "Gain <y>$25 (scales with time)</c>. <g>Heal</c> for <g>40%</c> <c_stack>(+20% per stack)</c> of <y>spent gold</c>.",
+            "destination" : "00041\nRad Lab\nBackwaters\nMars",
+            "date" : "11/08/2056",
+            "story" : "A true antique! These models deteorate pretty rapidly, but lucky for you, this one has never been put to work. Strange request though, are you planning to use it yourself..? This device is over 100 years old! I am sure the federacy would be more than willing to supply modern equipment for any *ethical* experiments. What are you up to, Doctor?"
+        },
         "metalDetector" : {
             "name" : "Metal Detector",
             "pickup" : "Unearth bonus temporary items when activating the Teleporter.",
@@ -35,7 +43,7 @@
         "speedOnPickup" : {
             "name" : "Record",
             "pickup" : "Move faster when collecting items.",
-            "description" : "<b>Collecting an item</c> increases <y>movement speed</c> by <b>20%</c> <c_stack>(+20% per stack)</c> for <b>15 seconds</c>.",
+            "description" : "Collecting an item increases <y>movement speed</c> by <b>20%</c> <c_stack>(+20% per stack)</c> for <b>15 seconds</c>.",
             "destination" : "Box 19\nSeon Gas Rig\nSaturn",
             "date" : "3/01/2056",
             "story" : "This is our song; remember? Back in high school.. how time flies! Hope your new job is panning out, [REDACTED] and I think about you every day. Much love! XOXO\n\n[Some details omitted to maintain customer anonymity]"
