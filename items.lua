@@ -1,17 +1,22 @@
 ---@class ItemModule
 ---@field id integer
----@field log_id integer
 
 ---@type table<string, ItemModule>
 local items = ... or {}
 
-local treasure_loot_pools = gm.variable_global_get("treasure_loot_pools")
+-- if this is not a separate function then the game crashes..
+local function custom_item_pickup_object(identifier)
+    return gm.object_add_w(namespace, "generated_ItemPickup_" .. identifier, gm.constants.pPickupItem)
+end
 
-function add_item_to_loot_pool(item)
-    local tier = get(item, CLASS_ITEM.tier)
-    local loot_pool = get(treasure_loot_pools, gm.ITEM_TIER_to_LOOT_POOL_INDEX(tier))
-    local drop_pool = gm.struct_get(loot_pool, "drop_pool")
-    gm.ds_list_add(drop_pool, get(item, CLASS_ITEM.object_id))
+---@param identifier string
+---@param sprite number
+---@return number
+function custom_item_pickup(identifier, sprite)
+    local object = custom_item_pickup_object(identifier)
+    gm.object_set_depth(object, -290)
+    gm.object_set_sprite_w(object, sprite)
+    return object
 end
 
 ---@param identifier string

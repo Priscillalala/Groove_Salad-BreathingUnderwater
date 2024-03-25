@@ -3,22 +3,18 @@ local boomerang, identifier = ...
 
 if not boomerang then
     boomerang = {}
-    boomerang.id = gm.item_create(namespace, identifier)
-    local item = get(class_item, boomerang.id)
-    set(item, CLASS_ITEM.tier, ITEM_TIER.common)
-    set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_damage)
-
-    local sBoomerang = load_sprite("sBoomerang", 18, 18)
-    set(item, CLASS_ITEM.sprite_id, sBoomerang)
-    gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sBoomerang)
-
-    boomerang.log_id = gm.item_log_create(namespace, identifier, 0, sBoomerang)
-    local item_log = get(class_item_log, boomerang.log_id)
-    set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
-
-    set(item, CLASS_ITEM.item_log_id, boomerang.log_id)
-
-    add_item_to_loot_pool(item)
+    boomerang.id = gm.item_create(
+        namespace,
+        identifier,
+        nil,
+        ITEM_TIER.common,
+        custom_item_pickup(identifier, load_sprite("sBoomerang", 18, 18)),
+        LOOT_TAG.category_damage,
+        nil,
+        nil,
+        true,
+        0
+    )
 end
 
 local is_boomerang_identifier = namespace .. "-is_boomerang"

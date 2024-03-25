@@ -3,22 +3,18 @@ local monkeyMask, identifier = ...
 
 if not monkeyMask then
     monkeyMask = {}
-    monkeyMask.id = gm.item_create(namespace, identifier)
-    local item = get(class_item, monkeyMask.id)
-    set(item, CLASS_ITEM.tier, ITEM_TIER.rare)
-    set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_damage)
-
-    local sMonkeyMask = load_sprite("sMonkeyMask", 20, 20)
-    set(item, CLASS_ITEM.sprite_id, sMonkeyMask)
-    gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sMonkeyMask)
-
-    monkeyMask.log_id = gm.item_log_create(namespace, identifier, 4, sMonkeyMask)
-    local item_log = get(class_item_log, monkeyMask.log_id)
-    set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
-
-    set(item, CLASS_ITEM.item_log_id, monkeyMask.log_id)
-
-    add_item_to_loot_pool(item)
+    monkeyMask.id = gm.item_create(
+        namespace,
+        identifier,
+        nil,
+        ITEM_TIER.rare,
+        custom_item_pickup(identifier, load_sprite("sMonkeyMask", 20, 20)),
+        LOOT_TAG.category_damage,
+        nil,
+        nil,
+        true,
+        4
+    )
 
     monkeyMask.rage_id = gm.buff_create(namespace, "rage")
     local rage = get(class_buff, monkeyMask.rage_id)

@@ -3,23 +3,18 @@ local speedOnPickup, identifier = ...
 
 if not speedOnPickup then
     speedOnPickup = {}
-    speedOnPickup.id = gm.item_create(namespace, identifier)
-    local item = get(class_item, speedOnPickup.id)
-    set(item, CLASS_ITEM.tier, ITEM_TIER.common)
-    set(item, CLASS_ITEM.loot_tags, LOOT_TAG.category_utility)
-
-    local sRecord = load_sprite("sRecord", 17, 17)
-    set(item, CLASS_ITEM.sprite_id, sRecord)
-    gm.object_set_sprite_w(get(item, CLASS_ITEM.object_id), sRecord)
-
-    speedOnPickup.log_id = gm.item_log_create(namespace, identifier, 0, sRecord)
-    local item_log = get(class_item_log, speedOnPickup.log_id)
-    set(item_log, CLASS_ITEM_LOG.token_priority, "item.mysteriousVial.priority")
-    set(item_log, CLASS_ITEM_LOG.pickup_object_id, get(item, CLASS_ITEM.object_id))
-
-    set(item, CLASS_ITEM.item_log_id, speedOnPickup.log_id)
-
-    add_item_to_loot_pool(item)
+    speedOnPickup.id = gm.item_create(
+        namespace,
+        identifier,
+        nil,
+        ITEM_TIER.common,
+        custom_item_pickup(identifier, load_sprite("sRecord", 17, 17)),
+        LOOT_TAG.category_utility,
+        nil,
+        nil,
+        true,
+        0
+    )
 
     speedOnPickup.buff_id = gm.buff_create(namespace, "speedOnPickupBuff")
     local buff = get(class_buff, speedOnPickup.buff_id)
