@@ -23,7 +23,7 @@ CLASS_BUFF  = {
 
 class_buff = gm.variable_global_get("class_buff")
 
----@class class_item
+---@enum class_item
 CLASS_ITEM = {
     namespace = 0,
     identifier = 1,
@@ -41,6 +41,24 @@ CLASS_ITEM = {
     actor_component = 13,
     loot_tags = 14,
     is_new_item = 15,
+}
+
+---@enum class_equipment
+CLASS_EQUIPMENT = {
+	namespace = 0,
+	identifier = 1,
+	token_name = 2,
+	token_text = 3,
+	on_use = 4,
+	cooldown = 5,
+	tier = 6,
+	sprite_id = 7,
+	object_id = 8,
+	item_log_id = 9,
+	achievement_id = 10,
+	effect_display = 11,
+	loot_tags = 12,
+	is_new_equipment = 13,
 }
 
 ---@enum class_item_log
@@ -85,4 +103,5 @@ LOOT_TAG =  {
 }
 
 class_item = gm.variable_global_get("class_item")
+class_equipment = gm.variable_global_get("class_equipment")
 class_item_log = gm.variable_global_get("class_item_log")

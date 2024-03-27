@@ -52,6 +52,8 @@ local function init()
     require("./globals")
     ---@diagnostic disable-next-line: redundant-parameter
     items = require("./items", items)
+    ---@diagnostic disable-next-line: redundant-parameter
+    equipment = require("./equipment", equipment)
     hot_reloading = true
 end
 
