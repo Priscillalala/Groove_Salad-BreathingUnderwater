@@ -47,26 +47,6 @@ gm.post_code_execute(function(self, other, code, result, flags)
     end
 end)
 
-local function init()
-    log.info("init!")
-    require("./globals")
-    ---@diagnostic disable-next-line: redundant-parameter
-    items = require("./items", items)
-    ---@diagnostic disable-next-line: redundant-parameter
-    equipment = require("./equipment", equipment)
-    hot_reloading = true
-end
-
-if hot_reloading then
-    log.info("hot reloading!")
-    init()
-else
-    object_pre_hooks["gml_Object_oStartMenu_Step_2"] = function()
-        object_pre_hooks["gml_Object_oStartMenu_Step_2"] = nil
-        init()
-    end
-end
-
 callback_names = gm.variable_global_get("callback_names")
 
 ---@type table<string, fun(self, other, result, args): boolean?>
@@ -88,3 +68,23 @@ gm.post_script_hook(gm.constants.callback_execute, function (self, other, result
         hook(self, other, result, args)
     end
 end)
+
+local function init()
+    log.info("init!")
+    require("./globals")
+    ---@diagnostic disable-next-line: redundant-parameter
+    items = require("./items", items)
+    ---@diagnostic disable-next-line: redundant-parameter
+    equipment = require("./equipment", equipment)
+    hot_reloading = true
+end
+
+if hot_reloading then
+    log.info("hot reloading!")
+    init()
+else
+    object_pre_hooks["gml_Object_oStartMenu_Step_2"] = function()
+        object_pre_hooks["gml_Object_oStartMenu_Step_2"] = nil
+        init()
+    end
+end

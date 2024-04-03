@@ -37,7 +37,11 @@ end)
 gm.pre_script_hook(gm.constants.actor_proc_on_damage, function(self, other, result, args)
     local item_stack = get(self.inventory_item_stack, monkeyMask.id)
     if item_stack > 0 then
+        local buff_stack = get(self.buff_stack, monkeyMask.rage_id)
         gm.apply_buff(self, monkeyMask.rage_id, 60 + 60 * item_stack)
+        if buff_stack <= 0 then
+            self:recalculate_stats()
+        end
     end
 end)
 --]]
